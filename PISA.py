@@ -52,8 +52,6 @@ with fig_col2:
 
 df3 = PISAdata.groupby(['COUNTRY_CODE', 'bullied'])['bullied'].count().rename("Percentage of bullied").groupby(level = 0).transform(lambda x: x/x.sum()).reset_index()
 df3 = df3.query('bullied == True')
-st.dataframe(PISAdata.groupby(['COUNTRY_CODE', 'bullied'])['bullied'].count().rename("bullied2").groupby(level = 0).transform(lambda x: x/x.sum()))
-# df3 = PISAdata.query('bullied == True').groupby('COUNTRY_CODE')['COUNTRY_CODE'].count().rename("No of bullied").reset_index()
 fig3 = px.choropleth(df3, locations="COUNTRY_CODE",
                     color="Percentage of bullied", # lifeExp is a column of gapminder
                     hover_name="COUNTRY_CODE", # column to add to hover information
