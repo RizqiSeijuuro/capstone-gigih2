@@ -11,8 +11,12 @@ st.write("This is a streamlit page of Dashboard Bullying by KPAI")
 
 KPAI = pd.read_csv('data/KPAI_2011-2022.csv')
 
-fig = px.bar(KPAI, x="Tahun", y=["Anak Korban Kekerasan di Sekolah (Bulliying)", "Anak Pelaku Kekerasan di Sekolah (Bulliying)"],
-             barmode="group", width=1100)
+fig = px.bar(KPAI, x="Tahun", 
+             y=[
+                 "Anak Korban Kekerasan di Sekolah (Bulliying)",
+                 "Anak Pelaku Kekerasan di Sekolah (Bulliying)"
+             ],
+             barmode="group", width=1100, title='Jumlah Pelaporan Bullying di Sekolah')
 
 st.plotly_chart(fig)
 

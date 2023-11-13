@@ -83,8 +83,8 @@ with fig_col1:
     df1['Most_Often_Bullied_Past_30_Days_label'] = df1['Most_Often_Bullied_Past_30_Days_label'].replace([2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, ], True)
     df1 = pd.DataFrame({'Percentage of bullied': df1.groupby(['Gender_label', 'Most_Often_Bullied_Past_30_Days_label']).size() * 100 / len(df1)}).reset_index()
     df1['Percentage of bullied'] = df1['Percentage of bullied'].round(decimals=2)
-    fig1 = px.bar(df1, x="Gender_label", y="Percentage of bullied",
-                hover_data=['Percentage of bullied'], labels={'Gender_label':'Gender'})
+    fig1 = px.bar(df1, x="Gender_label", y="Percentage of bullied", title='Percentage of Bullied by Gender',
+                width=500, hover_data=['Percentage of bullied'], labels={'Gender_label':'Gender'})
     fig1.update_xaxes(labelalias={1: 'Male', 2: 'Female'})
     fig1.update_yaxes(range=[0,100])
     st.plotly_chart(fig1)
@@ -95,8 +95,8 @@ with fig_col2:
     df2 = pd.DataFrame({'Percentage of bullied': df2.groupby(['Grade_label', 'Most_Often_Bullied_Past_30_Days_label']).size() * 100 / len(df2)}).reset_index()
     df2['Percentage of bullied'] = df2['Percentage of bullied'].round(decimals=2)
     df2['Grade_label'] = df2['Grade_label'].replace([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], [7, 8, 9, 10, 11, 12])
-    fig2 = px.bar(df2, x="Grade_label", y="Percentage of bullied",
-                hover_data=['Percentage of bullied'], labels={'Grade_label':'Grade'})
+    fig2 = px.bar(df2, x="Grade_label", y="Percentage of bullied", title='Percentage of Bullied by Grade',
+                width=500, hover_data=['Percentage of bullied'], labels={'Grade_label':'Grade'})
     # fig2.update_xaxes(labelalias={1: 'Male', 2: 'Female'})
     fig2.update_yaxes(range=[0,100])
     st.plotly_chart(fig2)
@@ -107,8 +107,8 @@ df3 = pd.DataFrame({'Percentage of bullied': df3.groupby(['Age_label', 'Most_Oft
 df3['Age_label'] = df3['Age_label'].replace([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0],
                             [11, 12, 13, 14, 15, 16, 17, 18])
 df3['Percentage of bullied'] = df3['Percentage of bullied'].round(decimals=2)
-fig3 = px.bar(df3, x="Age_label", y="Percentage of bullied",
-            hover_data=['Percentage of bullied'], labels={'Age_label':'Age'})
+fig3 = px.bar(df3, x="Age_label", y="Percentage of bullied", title='Percentage of Bullied by Age',
+            width=1100, hover_data=['Percentage of bullied'], labels={'Age_label':'Age'})
 # fig2.update_xaxes(labelalias={1: 'Male', 2: 'Female'})
 fig3.update_yaxes(range=[0,100])
 st.plotly_chart(fig3)
